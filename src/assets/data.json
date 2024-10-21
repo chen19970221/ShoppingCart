@@ -1,0 +1,118 @@
+{
+  "iceType": ["正常冰","少冰","微冰","去冰","溫","熱"],
+  "sugarType": ["正常","少糖","半糖","微糖","一分糖","無糖"],
+  "toppingsType":["珍珠","粉條","仙草","椰果","小粉圓"],
+  "productsList" : [
+  {
+    "name": "頂級烏瓦紅茶",
+    "price": 85,
+    "engName": "Uva Black Tea",
+    "defaluts":{
+      "ice": "",
+      "sugar": "",
+      "toppings": []
+    }
+  },
+  {
+    "name": "翡翠綠茶凍飲",
+    "price": 90,
+    "engName": "Premium Jasmine Tea",
+    "defaluts":{
+      "ice": "",
+      "sugar": "",
+      "toppings": ["粉條"]
+    }
+  },
+  {
+    "name": "珍珠奶茶",
+    "price": 100,
+    "engName": "Bubble Tea",
+    "defaluts":{
+      "ice": "",
+      "sugar": "",
+      "toppings": ["珍珠"]
+    }
+  },
+  {
+    "name": "鐵觀音拿鐵",
+    "price": 115,
+    "engName": "Tieguanyin Latte",
+    "defaluts":{
+      "ice": "",
+      "sugar": "",
+      "toppings": []
+    }
+  },
+  {
+    "name": "紅心芭樂檸檬綠茶",
+    "price": 115,
+    "engName": "Pink Guava Lemon Premium Jasmine Tea",
+    "defaluts":{
+      "ice": "",
+      "sugar": "",
+      "toppings": []
+    }
+  },
+  {
+    "name": "珍珠紅茶",
+    "price": 90,
+    "engName": "Pearl Black Tea",
+    "defaluts":{
+      "ice": "",
+      "sugar": "",
+      "toppings": ["珍珠"]
+    }
+  },
+  {
+    "name": "檸檬蜜凍飲",
+    "price": 105,
+    "engName": "Honey Lemon Drink",
+    "defaluts":{
+      "ice": "",
+      "sugar": "",
+      "toppings": ["粉條"]
+    }
+  },
+  {
+    "name": "蜂蜜拿鐵",
+    "price": 115,
+    "engName": "Honey Latte",
+    "defaluts":{
+      "ice": "",
+      "sugar": "",
+      "toppings": []
+    }
+  },
+  {
+    "name": "高山焙火烏龍(熱飲)",
+    "price": 220,
+    "engName": "Roasted Oolong Tea",
+    "defaluts":{
+      "ice": "熱",
+      "sugar": "",
+      "toppings": []
+    }
+  },
+  {
+    "name": "高山金萱(熱飲)",
+    "price": 220,
+    "engName": "Jin-Xuan Oolong Tea",
+    "defaluts":{
+      "ice": "熱",
+      "sugar": "",
+      "toppings": []
+    }
+  },
+  {
+    "name": "冰梅凍飲(冷飲)",
+    "price": 95,
+    "engName": "Plum Black Tea",
+    "defaluts":{
+      "ice": ["正常冰","少冰","微冰","去冰"],
+      "sugar": "",
+      "toppings": ["粉條"]
+    }
+  }]
+  
+  
+}
