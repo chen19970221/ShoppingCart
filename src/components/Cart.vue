@@ -1,10 +1,23 @@
 <script setup>
-import { defineProps } from "vue"
+import { computed, defineProps } from "vue"
 
 const props = defineProps({
-  product: Object
+  cartList: Array
 });
 
+const orderId = new Date().getTime()
+
+const total = computed(() => {
+  return props.cartList.reduce((sum, item) => {
+    return sum + item.price * item.drinkQuantity;
+  }, 0);
+});
+
+const toppingsAnswer = computed(() => {
+  return props.cartList.reduce((sum, item) => {
+    return sum + item.toppingsAnswer;
+  }, '');
+});
 
 
 </script>
@@ -24,22 +37,27 @@ const props = defineProps({
             <th scope="row">小計</th>
           </tr>
         </thead>
-        
         <tbody>
-          <tr>
+          <tr v-for=" item in cartList " :key="orderId">
             <td>
-              {{  props.product.name }}
+              {{  item.name }}
               <br>
-              <span class="text-secondary text-opacity-75">{{ props.product.memo }}</span>
+              <span class="text-secondary text-opacity-75">{{ item.memo }}</span>
             </td>
-            <td>{{ props.product.ice }}</td>
-            <td>{{ props.product.sugar }}</td>
-            <td>{{ props.product.toppings }}</td>
-            <td class="text-end pe-3">{{ props.product.price }}</td>
-            <td>{{ props.product.quantity }}</td>
-            <td></td>
+            <td>{{ item.iceAnswer }}</td>
+            <td>{{ item.sugarAnswer }}</td>
+            <td>{{ toppingsAnswer }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.drinkQuantity }}</td>
+            <td> {{  item.price * item.drinkQuantity }}</td>
           </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6" class="text-end">總計</td>
+            <td>{{ total }}</td>
+          </tr>
+        </tfoot>
       </table>
     </div>
   </div>

@@ -1,19 +1,10 @@
 <script setup>
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import Products from './components/Products.vue'
 import Cart from './components/Cart.vue'
 import Details from './components/Details.vue'
-const product = reactive({
-  name: '',
-  engName: '',
-  price: '',
-  drinkQuantity: '',
-  sugarAnswer: '',
-  iceAnswer: '',
-  toppingsAnswer: '',
-  memo: ''
-});
-
+const cartList = reactive([]) 
+const product = {}
 
 
 const productData = (item) => {
@@ -23,16 +14,29 @@ const productData = (item) => {
 }
 
 const detailData = (item) => { 
-  console.log(product)
   console.log(item)
   product.drinkQuantity = item.drinkQuantity
-  product.sugarAnswer = item.sugar
-  product.iceAnswer = item.ice
-  product.toppingsAnswer = item.toppings
+  product.sugarAnswer = item.sugarAnswer
+  product.iceAnswer = item.iceAnswer
+  product.toppingsAnswer = item.toppingsAnswer
   product.memo = item.memo
   console.log(product)
+  var newProduct = {};
+  for (var key in product) {
+    newProduct[key] = product[key];
+  }
+  cartList.push(newProduct)
+  newProduct = {}  
+  console.log(cartList)
+  countTotal(cartList)
+
 }
 
+function countTotal(cartList) {
+  const subTotal = cartList.price * cartList.drinkQuantity
+  console.log(subTotal)
+  // total.value = cartList.reduce((total, item) => total + (item.price * item.drinkQuantity), 0)
+}
 
 
 
@@ -46,7 +50,7 @@ const detailData = (item) => {
       </div>
       <div class="col-12 col-sm-6 col-md-8">
         <Details @detailData="detailData"/>
-        <Cart :product="product"/>
+        <Cart :cartList="cartList"/>
       </div>
     </div>
   </div>

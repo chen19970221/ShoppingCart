@@ -3,7 +3,7 @@ import data from "@/assets/data.json"
 import { ref, defineEmits } from "vue"
 const sugarAnswer = ref('')
 const iceAnswer = ref('')
-const toppingsAnswer = ref('')
+const toppingsAnswer = ref([])
 const drinkQuantity = ref(1)
 const memo = ref('')
 const emit = defineEmits(['detailData'])
@@ -11,12 +11,26 @@ const emit = defineEmits(['detailData'])
 function getDetails(drinkQuantity, sugarAnswer, iceAnswer, toppingsAnswer, memo) { 
   const details = {}
   details.drinkQuantity = drinkQuantity
-  details.sugar = sugarAnswer
-  details.ice = iceAnswer
-  details.toppings = toppingsAnswer
+  details.sugarAnswer = sugarAnswer
+  details.iceAnswer = iceAnswer
+  details.toppingsAnswer = toppingsAnswer
   details.memo = memo
   console.log(details)
   emit('detailData', details)
+ drinkQuantity.value = 1;
+  sugarAnswer.value = '';
+  iceAnswer.value = '';
+  toppingsAnswer.value = [];
+  memo.value = '';
+}
+
+function cancelDetails() {
+  drinkQuantity.value = 1;
+  sugarAnswer.value = '';
+  iceAnswer.value = '';
+  toppingsAnswer.value = [];
+  memo.value = '';
+  console.log(sugarAnswer.value, iceAnswer.value); 
 }
 
 </script>
@@ -27,7 +41,8 @@ function getDetails(drinkQuantity, sugarAnswer, iceAnswer, toppingsAnswer, memo)
       <!-- quantity -->
       <div class="mb-3">
         <label for="quantity" class="form-label">數量</label>
-        <input type="text" id="quantity" class="form-control" v-model="drinkQuantity">
+        <input type="number" id="quantity" class="form-control" v-model.number="drinkQuantity">
+        {{ typeof drinkQuantity }}
       </div>
 
       <!-- ice -->
@@ -51,9 +66,9 @@ function getDetails(drinkQuantity, sugarAnswer, iceAnswer, toppingsAnswer, memo)
       <!-- toppings -->
       <div class="mb-3">
         <p class="mb-1">加料</p>
-        <span class="me-2" v-for=" topping in data.toppingsType" :key="topping">
-          <input type="checkbox" :id="topping" class="me-1" v-model="toppingsAnswer" :value="topping" >
-          <label :for="topping">{{ topping }}</label>
+        <span class="me-2" v-for=" toppings in data.toppingsType" :key="toppings">
+          <input type="checkbox" :id="toppings" class="me-1" v-model="toppingsAnswer" :value="toppings" >
+          <label :for="toppings">{{ toppings }}</label>
         </span>
       </div>
 
@@ -66,7 +81,10 @@ function getDetails(drinkQuantity, sugarAnswer, iceAnswer, toppingsAnswer, memo)
       <!-- submit -->
       <div class="row g-2">
         <div class="col-12 col-sm-6">
-          <button type="button" class="btn btn-outline-primary form-control">取消</button>
+          <button type="button" class="btn btn-outline-primary form-control" 
+            @click="cancelDetails">
+            取消
+          </button>
         </div>
         <div class="col-12 col-sm-6">
           <button type="button" class="btn btn-primary form-control" 
