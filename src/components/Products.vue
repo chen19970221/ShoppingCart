@@ -9,7 +9,6 @@ function getProduct(product) {
   itemSelected.name = product.name
   itemSelected.engName = product.engName
   itemSelected.price = product.price
-  console.log(itemSelected.name)
   emit('productData', itemSelected)
  }
 
