@@ -13,11 +13,6 @@ const total = computed(() => {
   }, 0);
 });
 
-const toppingsAnswer = computed(() => {
-  return props.cartList.reduce((sum, item) => {
-    return sum + item.toppingsAnswer;
-  }, '');
-});
 
 
 </script>
@@ -46,7 +41,9 @@ const toppingsAnswer = computed(() => {
             </td>
             <td>{{ item.iceAnswer }}</td>
             <td>{{ item.sugarAnswer }}</td>
-            <td>{{ toppingsAnswer }}</td>
+            <td>
+              <span  v-for=" top in item.toppingsAnswer">{{ top }}</span>
+            </td>
             <td>{{ item.price }}</td>
             <td>{{ item.drinkQuantity }}</td>
             <td> {{  item.price * item.drinkQuantity }}</td>
