@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 import Products from './components/Products.vue'
 import Cart from './components/Cart.vue'
 import Details from './components/Details.vue'
@@ -20,7 +20,6 @@ const detailData = (item) => {
   product.iceAnswer = item.iceAnswer
   product.toppingsAnswer = item.toppingsAnswer
   product.memo = item.memo
-  console.log(product)
   var newProduct = {};
   for (var key in product) {
     newProduct[key] = product[key];
@@ -28,15 +27,10 @@ const detailData = (item) => {
   cartList.push(newProduct)
   newProduct = {}  
   console.log(cartList)
-  countTotal(cartList)
 
 }
 
-function countTotal(cartList) {
-  const subTotal = cartList.price * cartList.drinkQuantity
-  console.log(subTotal)
-  // total.value = cartList.reduce((total, item) => total + (item.price * item.drinkQuantity), 0)
-}
+
 
 
 
@@ -49,7 +43,7 @@ function countTotal(cartList) {
         <Products @productData="productData"/>
       </div>
       <div class="col-12 col-sm-6 col-md-8">
-        <Details @detailData="detailData"/>
+        <Details @detailData="detailData" :product="product" :productData="productData"/>
         <Cart :cartList="cartList"/>
       </div>
     </div>
