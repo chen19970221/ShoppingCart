@@ -7,17 +7,19 @@ const toppingsAnswer = ref([])
 const drinkQuantity = ref(1)
 const memo = ref('')
 const emit = defineEmits(['detailData'])
+const props = defineProps(['product','productData'])
 
 function getDetails(drinkQuantity, sugarAnswer, iceAnswer, toppingsAnswer, memo) { 
+  console.log(sugarAnswer,sugarAnswer.value)
   const details = {}
   details.drinkQuantity = drinkQuantity
-  details.sugarAnswer = sugarAnswer
-  details.iceAnswer = iceAnswer
+  details.sugarAnswer = sugarAnswer !== ''? sugarAnswer:'全糖'
+  details.iceAnswer = iceAnswer !== '' ? iceAnswer : '正常冰'
   details.toppingsAnswer = toppingsAnswer
   details.memo = memo
   console.log(details)
   emit('detailData', details)
- drinkQuantity.value = 1;
+  drinkQuantity.value = 1
   sugarAnswer.value = '';
   iceAnswer.value = '';
   toppingsAnswer.value = [];
@@ -36,6 +38,8 @@ function cancelDetails() {
 </script>
 
 <template>
+
+  <!-- <div v-if="!props.product.hasOwnProperty('name')" class="position-absolute text-white d-flex align-items-center justify-content-center" style="background-color: rgba(0, 0, 0, 0.65); top:8px; bottom:-76px;  width:52%;">請先選擇飲品</div> -->
   <div class="p-2">
     <form class="p-3 border">
       <!-- quantity -->
