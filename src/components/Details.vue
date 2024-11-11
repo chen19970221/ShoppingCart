@@ -46,7 +46,6 @@ function cancelDetails() {
       <div class="mb-3">
         <label for="quantity" class="form-label">數量</label>
         <input type="number" id="quantity" class="form-control" v-model.number="drinkQuantity">
-        {{ typeof drinkQuantity }}
       </div>
 
       <!-- ice -->
