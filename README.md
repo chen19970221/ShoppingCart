@@ -1,6 +1,15 @@
-# orderCart
+# Shopping Cart
 
-This template should help get you started developing with Vue 3 in Vite.
+點飲料的購物車系統
+
+## Features
+
+- 飲料選擇：展示各種飲料選項，讓使用者可以從列表中選擇飲料。
+- 客製化需求：提供使用者選擇不同的甜度、冰塊量、加料等參數。
+- 即時總計：在確認訂單前即時顯示總計金額。
+
+
+## Screenshots
 
 ## Recommended IDE Setup
 
@@ -27,3 +36,8 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## Folder Structure
+
+## Project Technologies
+
