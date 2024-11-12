@@ -53,6 +53,6 @@ npm run build
 
 ## Project Technologies
 
-- Vue.js
-- JavaScript
-- Bootstrap
+- Vue.js v3.5.12
+- Vite v5.4.10
+- BootStrap v5.3.3
