@@ -1,6 +1,6 @@
 <script setup>
 import data from "@/assets/data.json"
-import { ref, defineEmits, reactive } from "vue"
+import { ref, defineEmits, reactive,  } from "vue"
 const sugarAnswer = ref('')
 const iceAnswer = ref('')
 const toppingsAnswer = ref([])
@@ -13,7 +13,7 @@ const props = defineProps(['selectedProduct', 'productData'])
 function getDetails() { 
   const details = {}
   details.drinkQuantity = drinkQuantity.value
-  details.sugarAnswer = sugarAnswer.value !== ''? sugarAnswer.value:'全糖'
+  details.sugarAnswer = sugarAnswer.value !== ''? sugarAnswer.value : '全糖'
   details.iceAnswer = iceAnswer.value !== '' ? iceAnswer.value : '正常冰'
   details.toppingsAnswer = toppingsAnswer.value
   details.memo = memo.value
@@ -31,13 +31,11 @@ function cancelDetails() {
   iceAnswer.value = '';
   toppingsAnswer.value = [];
   memo.value = '';
-  console.log(sugarAnswer.value, iceAnswer.value); 
 }
 
 </script>
 
 <template>
-  <!-- {{ props.selectedProduct.defaults.ice }} -->
   <div class="container py-2">
     <div class="row">
       <div class="col-12">
