@@ -23,17 +23,8 @@ const detailData = (item) => {
   selectedProduct.iceAnswer = item.iceAnswer
   selectedProduct.toppingsAnswer = item.toppingsAnswer
   selectedProduct.memo = item.memo
-  // var newProduct = {};
-  // for (var key in selectedProduct) {
-  //   newProduct[key] = selectedProduct[key];
-  // }
-  // cartList.push(newProduct)
-  // newProduct = {}
-  
-  const newProduct = { ...selectedProduct }; // 使用展開運算符複製 selectedProduct
+  const newProduct = { ...selectedProduct }; 
   cartList.push(newProduct);
-
-  // 清空 selectedProduct 的內容
   Object.keys(selectedProduct).forEach((key) => {
     delete selectedProduct[key];
   });
