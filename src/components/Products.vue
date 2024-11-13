@@ -9,6 +9,7 @@ function getProduct(product) {
   itemSelected.name = product.name
   itemSelected.engName = product.engName
   itemSelected.price = product.price
+  itemSelected.defaults = product.defaults
   emit('productData', itemSelected)
  }
 
