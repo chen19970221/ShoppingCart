@@ -13,24 +13,32 @@ const productData = (item) => {
   selectedProduct.engName = item.engName
   selectedProduct.price = item.price
   selectedProduct.defaults = item.defaults
-  console.log(selectedProduct)
 }
 
 // details 傳出的飲料客製化內容
-const detailData = (item) => { 
+const detailData = (item) => {
   console.log(item)
   selectedProduct.drinkQuantity = item.drinkQuantity
   selectedProduct.sugarAnswer = item.sugarAnswer
   selectedProduct.iceAnswer = item.iceAnswer
   selectedProduct.toppingsAnswer = item.toppingsAnswer
   selectedProduct.memo = item.memo
-  var newProduct = {};
-  for (var key in selectedProduct) {
-    newProduct[key] = selectedProduct[key];
-  }
-  cartList.push(newProduct)
-  newProduct = {}  
-  console.log(cartList)
+  // var newProduct = {};
+  // for (var key in selectedProduct) {
+  //   newProduct[key] = selectedProduct[key];
+  // }
+  // cartList.push(newProduct)
+  // newProduct = {}
+  
+  const newProduct = { ...selectedProduct }; // 使用展開運算符複製 selectedProduct
+  cartList.push(newProduct);
+
+  // 清空 selectedProduct 的內容
+  Object.keys(selectedProduct).forEach((key) => {
+    delete selectedProduct[key];
+  });
+
+  console.log(selectedProduct);
 }
 
 
@@ -41,7 +49,7 @@ const detailData = (item) => {
   <div class="container">
     <div class="row">
       <div class="col-12 col-sm-6 col-md-4">
-        <Products @productData="productData"/>
+        <Products @productData="productData" :selectedProduct="selectedProduct"/>
       </div>
       <div class="col-12 col-sm-6 col-md-8">
         <Details @detailData="detailData" :selectedProduct="selectedProduct" :productData="productData"/>
